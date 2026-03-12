@@ -1,39 +1,264 @@
-.passcode-entry {
-  background-color: #f8d3d7; /* Light pastel pink */
-  color: #3b0e12; /* Darker text for contrast */
-  font-family: 'Arial', sans-serif;
-  padding: 20px;
-  border-radius: 5px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.message-page {
-  background-color: #fde3e5; /* Soft pastel pink */
-  color: #3b0e12;
-  font-family: 'Arial', sans-serif;
-  padding: 20px;
-  border-radius: 5px;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 100%);
+    color: #8B5A6B;
+    overflow: hidden;
 }
 
-.heart-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  background-color: #f8d3d7;
-  padding: 20px;
+.page {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.heart-gallery img {
-  margin: 10px;
-  border-radius: 10px;
-  width: 100px;
-  height: 100px;
+.page.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 10;
 }
 
-.final-message {
-  background-color: #fde3e5;
-  color: #3b0e12;
-  font-size: 1.5em;
-  text-align: center;
-  padding: 20px;
-  border-radius: 5px;
+/* Page 1: Lock */
+.lock-container {
+    background: white;
+    padding: 3rem;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(255, 182, 217, 0.3);
+}
+
+.lock-container h1 {
+    font-size: 2rem;
+    color: #FF69B4;
+    margin-bottom: 1rem;
+}
+
+.lock-container p {
+    color: #8B5A6B;
+    margin-bottom: 2rem;
+}
+
+.lock-container input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #FFB6D9;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.lock-container button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lock-container button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+}
+
+#errorMsg {
+    color: #ff6b6b;
+    margin-top: 1rem;
+}
+
+/* Page 2: Message */
+.message-container {
+    background: white;
+    padding: 3rem;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(255, 182, 217, 0.3);
+}
+
+.message-container h2 {
+    font-size: 2rem;
+    color: #FF69B4;
+    margin-bottom: 2rem;
+}
+
+.message-container p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #8B5A6B;
+    margin-bottom: 2rem;
+}
+
+.message-container button {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #FFD1E8 0%, #FFB6D9 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.message-container button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 182, 217, 0.4);
+}
+
+/* Page 3: Gallery */
+.gallery-container {
+    text-align: center;
+}
+
+.gallery-container h2 {
+    font-size: 2rem;
+    color: #FF69B4;
+    margin-bottom: 2rem;
+}
+
+.heart-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    place-items: center;
+}
+
+.photo-item {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #FFB6D9 0%, #FFC0CB 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    box-shadow: 0 5px 15px rgba(255, 182, 217, 0.3);
+    animation: popIn 0.5s ease-out forwards;
+    transition: all 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 182, 217, 0.4);
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gallery-container button {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-container button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+}
+
+/* Page 4: Final Message */
+.final-container {
+    background: white;
+    padding: 3rem;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(255, 182, 217, 0.3);
+}
+
+.final-container h2 {
+    font-size: 2rem;
+    color: #FF69B4;
+    margin-bottom: 2rem;
+}
+
+.final-container textarea {
+    width: 100%;
+    height: 250px;
+    padding: 1.5rem;
+    border: 2px solid #FFB6D9;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #8B5A6B;
+    resize: none;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.final-container textarea:focus {
+    outline: none;
+    border-color: #FF69B4;
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
+}
+
+.final-container button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #FF69B4 0%, #FFB6D9 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.final-container button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+}
+
+@media (max-width: 768px) {
+    .lock-container, .message-container, .gallery-container, .final-container {
+        padding: 2rem;
+        margin: 1rem;
+    }
+
+    .heart-grid {
+        grid-template-columns: repeat(3, 100px);
+        gap: 1rem;
+    }
+
+    .photo-item {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+    }
 }
