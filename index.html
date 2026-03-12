@@ -1,33 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anniversary Celebration</title>
+    <title>Happy Anniversary 💕</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Happy Anniversary!</h1>
-        <p>Join us in celebrating our special day.</p>
-    </header>
-    <main>
-        <section>
-            <h2>Event Details</h2>
-            <p>Date: March 12, 2026</p>
-            <p>Location: Our favorite place</p>
-        </section>
-        <section>
-            <h2>Gallery</h2>
-            <p>Some pictures from our journey together.</p>
-        </section>
-        <section>
-            <h2>RSVP</h2>
-            <p>We would love to see you there!</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Anniversary Celebration</p>
-    </footer>
+    <!-- Page 1: Passcode Lock -->
+    <div id="page1" class="page active">
+        <div class="lock-container">
+            <h1>💕 วันครบรอบพิเศษ 💕</h1>
+            <p>กรุณากรอกรหัส 6 หลัก</p>
+            <input type="password" id="passcodeInput" maxlength="6" placeholder="000000">
+            <button onclick="checkPasscode()">ปลดล็อก 🔓</button>
+            <p id="errorMsg"></p>
+        </div>
+    </div>
+
+    <!-- Page 2: Message -->
+    <div id="page2" class="page">
+        <div class="message-container">
+            <h2>💌 ข้อความพิเศษ</h2>
+            <p>ในวันครบรอบนี้ ฉันอยากบอกว่า<br>เธอทำให้ทุกวันของฉันเต็มไปด้วยความสุข ♥️</p>
+            <button onclick="goToPage(3)">ดูต่อ 💕</button>
+        </div>
+    </div>
+
+    <!-- Page 3: Heart Gallery -->
+    <div id="page3" class="page">
+        <div class="gallery-container">
+            <h2>📸 ความทรงจำที่สวยงาม</h2>
+            <div class="heart-grid">
+                <div class="photo-item">📷</div>
+                <div class="photo-item">😊</div>
+                <div class="photo-item">🌸</div>
+                <div class="photo-item">💑</div>
+                <div class="photo-item">💕</div>
+                <div class="photo-item">🎂</div>
+                <div class="photo-item">✨</div>
+                <div class="photo-item">🌹</div>
+                <div class="photo-item">💞</div>
+            </div>
+            <button onclick="goToPage(4)">ข้อความสุดท้าย 💌</button>
+        </div>
+    </div>
+
+    <!-- Page 4: Final Message -->
+    <div id="page4" class="page">
+        <div class="final-container">
+            <h2>💝 ข้อความสุดท้าย</h2>
+            <textarea id="finalMessage" placeholder="ฉันอยากบอกเธอว่า..."></textarea>
+            <button onclick="saveFinalMessage()">💾 บันทึก</button>
+            <button onclick="goToPage(1)">🔙 กลับหน้าแรก</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
